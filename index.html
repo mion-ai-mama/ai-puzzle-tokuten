@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIで作る「オリジナルパズル販売」スタートガイド</title>
+<meta name="description" content="絵心ゼロでもOK。AIで画像を作って「商品」にするところまでやってみよう。作り方＋そのまま使えるプロンプト＋「月5万で終わらせない3つの工夫」をまとめた実践ガイドです。">
+<!-- OGP（SNSでシェアされたときの表示設定。OGP画像は設定しない方針） -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIで作る「オリジナルパズル販売」スタートガイド">
+<meta property="og:description" content="絵心ゼロでもOK。AIで画像を作って「商品」にするところまで。そのまま使えるプロンプト付きの実践ガイド。">
+<meta property="og:url" content="https://mion-ai-mama.github.io/ai-puzzle-tokuten/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#d03f64">
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<main id="main">
+
+  <!-- ============================================================
+       SECTION 01 ファーストビュー
+  ============================================================ -->
+  <section class="hero" id="hero" aria-label="ページ紹介">
+    <div class="hero__inner">
+      <p class="hero__label">そのまま使えるプロンプト付き</p>
+      <h1 class="hero__title">AIで作る<br>「オリジナルパズル販売」<br>スタートガイド</h1>
+      <p class="hero__subtitle">絵心ゼロでもOK。<br>AIで画像を作って、<br>“商品”にするところまでやってみよう。</p>
+      <svg class="hero__puzzle" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <g fill="#d03f64">
+          <path d="M8 8h40v14a8 8 0 1 1 0 16v10H8z" opacity="0.9"/>
+          <path d="M72 8h40v40H98a8 8 0 1 0-16 0H72V38a8 8 0 1 0 0-16z" opacity="0.55"/>
+          <path d="M8 72h10a8 8 0 1 1 16 0h14v40H8z" opacity="0.55"/>
+          <path d="M72 72h10a8 8 0 1 1 16 0h14v40H72z" opacity="0.9"/>
+        </g>
+      </svg>
+      <p class="hero__lead">作り方＋そのまま使えるプロンプト＋<strong>「月5万で終わらせない3つの工夫」</strong>をまとめた実践ガイド。</p>
+      <p class="hero__caption">※「月5万円」は目標の一例です。収益をお約束するものではありません。</p>
+      <details class="toc">
+        <summary>目次を開く</summary>
+        <ol>
+          <li><a href="#intro">この特典でやること</a></li>
+          <li><a href="#flow">全体像（仕組み）</a></li>
+          <li><a href="#step1">STEP 1 誰向けか、テーマを決める</a></li>
+          <li><a href="#step2">STEP 2 AIでパズル用の画像を作る</a></li>
+          <li><a href="#step3">STEP 3 Printifyでパズルにする</a></li>
+          <li><a href="#step4">STEP 4 どこで売る？</a></li>
+          <li><a href="#three">月5万で終わらせない3つの工夫</a></li>
+          <li><a href="#plan">今日やるなら、ここまででOK</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="#caution">重要な注意事項</a></li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 02 導入
+  ============================================================ -->
+  <section class="section" id="intro" aria-labelledby="intro-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="intro-heading">AIで画像は作れたけど、<br>「何に使えばいいの？」</h2>
+      <div class="prose">
+        <p>AIで画像を作ってみて、<br>「これって何に使えるの？」<br>と思ったことはありませんか？</p>
+        <p>実はAIで作ったオリジナル画像は、<strong>パズルなどの“実物の商品”</strong>にすることもできます。</p>
+        <p>しかも、<strong>Printify（プリンティファイ）</strong>のようなPODサービスを使えば、<strong>注文が入ってから商品を作る</strong>仕組みを用意できます。</p>
+        <p>このガイドでは、次の順番でやっていきます。</p>
+      </div>
+      <ol class="mini-flow">
+        <li>何を作る？</li>
+        <li>AIで画像を作る</li>
+        <li>パズルにする</li>
+        <li>販売につなげる</li>
+      </ol>
+      <div class="point-box">
+        <p class="point-box__label">POINT</p>
+        <p>今日は全部やらなくて大丈夫です。まずは<strong>「1商品を完成させる」</strong>ことをゴールに、読み進めてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 03 全体像の図解
+  ============================================================ -->
+  <section class="section section--soft" id="flow" aria-labelledby="flow-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="flow-heading">まずは、<br>全体の仕組みを見てみよう</h2>
+      <ol class="flow">
+        <li class="flow__item">
+          <span class="flow__who">あなた</span>
+          <span class="flow__what">テーマを決める</span>
+        </li>
+        <li class="flow__item">
+          <span class="flow__who">ChatGPT</span>
+          <span class="flow__what">パズル用の画像を作る</span>
+        </li>
+        <li class="flow__item flow__item--key">
+          <span class="flow__who">Printify</span>
+          <span class="flow__what">画像を商品にする</span>
+        </li>
+        <li class="flow__item flow__item--key">
+          <span class="flow__who">販売チャネル</span>
+          <span class="flow__what">お客様に販売する</span>
+        </li>
+        <li class="flow__item">
+          <span class="flow__who">注文後</span>
+          <span class="flow__what">製造・発送</span>
+        </li>
+      </ol>
+      <h3 class="sub-heading">ここ、間違えやすいポイント</h3>
+      <div class="compare">
+        <div class="compare__card">
+          <p class="compare__title">Printify</p>
+          <p class="compare__role">商品を作る・製造する側</p>
+          <p class="compare__desc">あなたの画像を、パズルなどの商品にしてくれるサービス。</p>
+        </div>
+        <div class="compare__card">
+          <p class="compare__title">Etsyなど</p>
+          <p class="compare__role">お客様に販売する場所</p>
+          <p class="compare__desc">お客様が商品を見つけて、買ってくれる場所。</p>
+        </div>
+      </div>
+      <div class="point-box">
+        <p class="point-box__label">POINT</p>
+        <p><strong>Printifyはお店（販売サイト）ではありません。</strong>商品を作ったあと、「売る場所」を別に用意します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 04 STEP 1 テーマ決め
+  ============================================================ -->
+  <section class="section" id="step1" aria-labelledby="step1-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">STEP 1</p>
+      <h2 class="section__heading" id="step1-heading">「誰向け？」から<br>パズルのテーマを決めよう</h2>
+      <div class="prose">
+        <p>いきなり画像を作る前に、先に決めることがあります。それは<strong>「誰が欲しがるパズルなのか？」</strong>です。</p>
+        <p>下はテーマの<strong>例</strong>です。「これが今売れている」という意味ではありません。考えるヒントにしてください。</p>
+      </div>
+      <div class="theme-grid">
+        <div class="theme-card">
+          <p class="theme-card__title">子ども向け</p>
+          <ul>
+            <li>動物</li>
+            <li>恐竜</li>
+            <li>乗り物</li>
+            <li>宇宙</li>
+            <li>海の生き物</li>
+          </ul>
+        </div>
+        <div class="theme-card">
+          <p class="theme-card__title">大人向け</p>
+          <ul>
+            <li>猫・犬</li>
+            <li>花</li>
+            <li>日本・和風</li>
+            <li>風景</li>
+            <li>ファンタジー</li>
+            <li>季節・イベント</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">プロンプト① 売れそうなテーマ候補をリサーチする</h3>
+      <div class="prose">
+        <p>Web検索ができるAIに貼り付けると、現在の市場を調べたうえで、テーマ候補を出してくれます。<mark class="var">【　】</mark>の部分は、あなたの内容に書き換えてから使ってください。</p>
+      </div>
+      <div class="prompt-box">
+        <p class="prompt-box__title">プロンプト① テーマ候補リサーチ</p>
+        <pre class="prompt-box__text" id="prompt-research">あなたは、海外向けのオンライン販売に詳しいリサーチ担当です。
+Web検索を使って、現在の市場を実際に調べたうえで、「AIで作った画像をジグソーパズルにして販売する」ためのテーマ候補を提案してください。
+
+Web検索が使えない場合は、最初にその旨を伝え、以降は「一般的な傾向からの推測」であることを明記してください。
+
+【私の情報】
+・販売したい国や地域：<mark class="var">【例：アメリカ／日本／まだ決めていない】</mark>
+・好きな雰囲気：<mark class="var">【例：やさしい／和風／かわいい／おまかせ】</mark>
+・AIで画像を作った経験：<mark class="var">【例：ほぼ初めて】</mark>
+
+【調べてほしいこと】
+1. Etsyなどで現在販売されているジグソーパズルの人気テーマ
+2. デザインの傾向（色・雰囲気・構図）
+3. 価格帯
+4. レビュー数や出品数から読み取れる、需要や競合の多さのヒント
+
+【提案してほしいこと】
+・子ども向けのテーマ候補を3つ
+・大人向けのテーマ候補を3つ
+・競合が多すぎず、初心者がAIで作りやすいテーマを優先する
+・各候補について、次の4点を書く
+　1) テーマ名
+　2) なぜ候補にしたか
+　3) 参考にした出典のURL
+　4) AIで作るときの注意点
+
+【条件】
+・既存のキャラクター、ブランド、有名作品に関わるテーマは除く
+・「調べて分かったこと」と「あなたの推測」を分けて書く
+・出典のない情報を、断定しない
+・最後に、私が自分の目で確認すべきポイントを3つ教えてください</pre>
+        <button class="btn btn--primary copy-btn" type="button" data-copy-target="prompt-research"><span class="copy-btn__label">コピーする</span><span class="copy-btn__done">コピーしました！</span></button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="warn-box">
+        <p class="warn-box__label">AIの答えだけで決めないでね</p>
+        <p>AIの回答は<strong>「市場調査の確定結果」ではありません</strong>。AIの回答だけで判断せず、実際の商品ページ・レビュー・販売状況も、<strong>自分の目で確認してください。</strong></p>
+      </div>
+      <p class="done-note">テーマを1つ決められたら、STEP 1は完了です。</p>
+      <label class="done-check"><input type="checkbox" data-progress="step1"><span>STEP 1 完了</span></label>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 05 STEP 2 AIで画像を作る
+  ============================================================ -->
+  <section class="section section--soft" id="step2" aria-labelledby="step2-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">STEP 2</p>
+      <h2 class="section__heading" id="step2-heading">AIで<br>パズル用のイラストを作ろう</h2>
+      <div class="point-box">
+        <p class="point-box__label">POINT</p>
+        <p><strong>最初から10枚作らなくてOK。まず1枚。</strong>テーマが決まったら、ChatGPTなどの画像を作れるAIで作ってみましょう。</p>
+      </div>
+      <h3 class="sub-heading">パズル画像で意識するポイント</h3>
+      <ul class="check-list">
+        <li>全体に、ほどよく情報（モチーフ）が入っている</li>
+        <li>何もない場所を増やしすぎない</li>
+        <li>大事なモチーフを、端ギリギリに置かない</li>
+        <li>不自然な文字が入っていないか確認する</li>
+        <li>既存のキャラクターやブランドは使わない</li>
+        <li>印刷に必要な画像サイズ・解像度は、販売する商品の仕様に合わせて確認する</li>
+      </ul>
+
+      <h3 class="sub-heading">プロンプト② パズル用の画像を作る</h3>
+      <div class="prose">
+        <p>STEP 1で決めたテーマを、<mark class="var">【　】</mark>に入れるだけで使えます。入力例は書き換えてください。</p>
+      </div>
+      <div class="prompt-box">
+        <p class="prompt-box__title">プロンプト② パズル用画像づくり</p>
+        <pre class="prompt-box__text" id="prompt-image">ジグソーパズル用の、オリジナルのイラストを1枚作ってください。
+
+【テーマ】<mark class="var">【例：森の動物たちのピクニック】</mark>
+【ターゲット】<mark class="var">【例：5〜8歳の子どもと、その保護者】</mark>
+【雰囲気】<mark class="var">【例：やさしい／にぎやか／落ち着いた】</mark>
+【好きな色】<mark class="var">【例：パステルカラー／おまかせ】</mark>
+【縦横比】<mark class="var">【例：横長／縦長／正方形】</mark>
+
+【条件】
+・ジグソーパズルにしたときに楽しめるよう、見どころ（小さなモチーフ）が複数ある構図にする
+・画面全体に、ほどよく絵柄が入っている（白や単色の広い余白をつくらない）
+・大事なモチーフを、画像の端ぎりぎりに置かない
+・文字、ロゴ、ブランド名は入れない
+・オリジナルのデザインにする
+・既存のキャラクターや作品、特定の作家の絵柄に似せない
+
+縦横比は、あとで商品の仕様に合わせて調整します。まずは上で指定した縦横比で作ってください。</pre>
+        <button class="btn btn--primary copy-btn" type="button" data-copy-target="prompt-image"><span class="copy-btn__label">コピーする</span><span class="copy-btn__done">コピーしました！</span></button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+        <a class="btn btn--outline btn--block" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPTを開く</a>
+      </div>
+
+      <h3 class="sub-heading">うまくいかなかったときの追加指示</h3>
+      <div class="prose">
+        <p>イメージと違ったら、続けてこんな言葉を送ってみましょう。ボタンでコピーできます。</p>
+      </div>
+      <ul class="kw-list">
+        <li class="kw"><span class="kw__text" id="fix-1">背景をもう少し細かくして</span><button class="btn btn--outline copy-btn" type="button" data-copy-target="fix-1"><span class="copy-btn__label">コピー</span><span class="copy-btn__done">コピーしました！</span></button></li>
+        <li class="kw"><span class="kw__text" id="fix-2">主役を少し小さくして</span><button class="btn btn--outline copy-btn" type="button" data-copy-target="fix-2"><span class="copy-btn__label">コピー</span><span class="copy-btn__done">コピーしました！</span></button></li>
+        <li class="kw"><span class="kw__text" id="fix-3">全体を明るくして</span><button class="btn btn--outline copy-btn" type="button" data-copy-target="fix-3"><span class="copy-btn__label">コピー</span><span class="copy-btn__done">コピーしました！</span></button></li>
+        <li class="kw"><span class="kw__text" id="fix-4">色数を増やして</span><button class="btn btn--outline copy-btn" type="button" data-copy-target="fix-4"><span class="copy-btn__label">コピー</span><span class="copy-btn__done">コピーしました！</span></button></li>
+        <li class="kw"><span class="kw__text" id="fix-5">文字やロゴが入っているので、消して</span><button class="btn btn--outline copy-btn" type="button" data-copy-target="fix-5"><span class="copy-btn__label">コピー</span><span class="copy-btn__done">コピーしました！</span></button></li>
+      </ul>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+      <p class="kw-hint">「○○を追加して」のように、足したいものを自分の言葉で伝えるのもOKです。</p>
+
+      <h3 class="sub-heading">AI画像チェックリスト</h3>
+      <div class="prose"><p>画像ができたら、ひとつずつ確認しましょう。</p></div>
+      <ul class="safety-list">
+        <li><label><input type="checkbox" data-progress="img1"><span>不自然な文字が入っていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="img2"><span>動物・人物などの形が崩れていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="img3"><span>既存キャラクターに似すぎていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="img4"><span>ロゴ・ブランド名が入っていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="img5"><span>商品にしたとき、重要な部分が切れない</span></label></li>
+        <li><label><input type="checkbox" data-progress="img6"><span>Printifyの商品仕様に必要な画像サイズ・解像度を確認した</span></label></li>
+      </ul>
+      <div class="note-box">
+        <p class="note-box__label">知っておいてね</p>
+        <p>ChatGPTの無料プランで使えるかどうか、画像を作れる枚数などは、プランや時期によって変わります。<strong>現在の公式の案内をご確認ください。</strong></p>
+      </div>
+      <label class="done-check"><input type="checkbox" data-progress="step2"><span>STEP 2 完了</span></label>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA① （STEP 2の後・軽量版）
+  ============================================================ -->
+  <section class="section cta-mid" id="cta-mid" aria-labelledby="cta-mid-heading">
+    <div class="section__inner reveal">
+      <div class="cta-card cta-card--light">
+        <h2 class="cta-card__heading" id="cta-mid-heading">AIを使って、家でできることを<br>もっと増やしたい人へ</h2>
+        <div class="prose">
+          <p>パズル販売は、AIを活用する方法のひとつです。</p>
+          <p>ほかにも、AIを仕事につなげる方法や、初心者さん向けの活用術を<strong class="cta-card__highlight">『AIマネタイズの教科書』</strong>にまとめています。無料で受け取れます。</p>
+        </div>
+        <a class="btn btn--primary btn--large" href="#cta" target="_blank" rel="noopener noreferrer" data-line-link data-cta="mid" hidden>『AIマネタイズの教科書』を見てみる</a>
+        <p class="cta-card__note">受け取りは任意です。このまま下に進んでも、最後まで読めます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 06 STEP 3 Printify
+  ============================================================ -->
+  <section class="section" id="step3" aria-labelledby="step3-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">STEP 3</p>
+      <h2 class="section__heading" id="step3-heading">Printifyで<br>パズルにしよう</h2>
+      <div class="prose">
+        <p><strong>Printify</strong>は、作った画像を実際の商品にしてくれる<strong>POD（プリントオンデマンド）</strong>サービスです。</p>
+        <p>PODとは、<strong>注文が入ってから商品を作る仕組み</strong>のこと。先に商品を大量に作って在庫を抱える必要がありません。</p>
+      </div>
+      <h3 class="sub-heading">パズルにするまでの流れ</h3>
+      <ol class="numbered-steps">
+        <li><strong>Printifyに登録する</strong></li>
+        <li><strong>商品カタログを開く</strong></li>
+        <li><strong>「Puzzle」「Jigsaw Puzzle」などで検索する</strong></li>
+        <li><strong>商品を選ぶ</strong></li>
+        <li><strong>AIで作った画像をアップロードする</strong></li>
+        <li><strong>プレビューで、見え方を確認する</strong></li>
+        <li><strong>商品の情報を設定する</strong></li>
+      </ol>
+      <div class="warn-box">
+        <p class="warn-box__label">最新情報は公式で確認してね</p>
+        <p>Printifyの画面・商品・価格・対応地域などは、変わることがあります。<strong>最新の仕様・価格・配送条件は、Printify公式サイトでご確認ください。</strong></p>
+        <p><a href="https://printify.com/" target="_blank" rel="noopener noreferrer">Printify公式サイト</a></p>
+      </div>
+
+      <h3 class="sub-heading">商品にする前の確認ポイント</h3>
+      <ul class="safety-list">
+        <li><label><input type="checkbox" data-progress="pf1"><span>画像が切れていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf2"><span>解像度の警告が出ていない</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf3"><span>原価を確認した</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf4"><span>送料を確認した</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf5"><span>製造地域を確認した</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf6"><span>配送できる地域を確認した</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf7"><span>商品のサイズ・ピース数を確認した</span></label></li>
+        <li><label><input type="checkbox" data-progress="pf8"><span>使いたい販売チャネルと接続できるか確認した</span></label></li>
+      </ul>
+      <label class="done-check"><input type="checkbox" data-progress="step3"><span>STEP 3 完了</span></label>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 07 STEP 4 どこで売る？
+  ============================================================ -->
+  <section class="section section--soft" id="step4" aria-labelledby="step4-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">STEP 4</p>
+      <h2 class="section__heading" id="step4-heading">どこで売る？<br>商品ページも作ろう</h2>
+      <div class="prose">
+        <p>Printifyで商品を作っただけでは、まだ誰にも見つけてもらえません。<strong>お客様に見つけてもらう場所</strong>が必要です。</p>
+      </div>
+      <ul class="card-grid card-grid--2">
+        <li class="card"><div><p class="card__title">Etsy</p><p class="card__desc">海外向けに販売するなら、選択肢のひとつです。</p></div></li>
+        <li class="card"><div><p class="card__title">Shopifyなど</p><p class="card__desc">自分のネットショップを作るタイプのサービスです。</p></div></li>
+      </ul>
+      <div class="point-box">
+        <p class="point-box__label">POINT</p>
+        <p>この特典では、各サービスの開設方法までは広げません。<strong>「Printify＝商品を作る」「販売チャネル＝商品を売る」</strong>という違いが分かればOKです。</p>
+      </div>
+
+      <h3 class="sub-heading">プロンプト③ 商品タイトル・説明文を作る</h3>
+      <div class="prose">
+        <p>販売ページの文章づくりも、AIに手伝ってもらいましょう。<mark class="var">【　】</mark>を書き換えて使います。</p>
+      </div>
+      <div class="prompt-box">
+        <p class="prompt-box__title">プロンプト③ 商品ページの文章づくり</p>
+        <pre class="prompt-box__text" id="prompt-listing">あなたは、オンライン販売の商品ページづくりをサポートするライターです。
+次の情報をもとに、商品ページに使う文章を作ってください。
+
+【商品テーマ】<mark class="var">【例：森の動物たちのピクニック】</mark>
+【デザイン】<mark class="var">【例：パステルカラーのやさしいイラスト】</mark>
+【ピース数】<mark class="var">【例：Printifyの商品ページで確認した数】</mark>
+【想定購入者】<mark class="var">【例：小さな子どもがいる家族、プレゼントを探している人】</mark>
+【特徴】<mark class="var">【例：見どころが多く、親子で楽しめる】</mark>
+【販売する国・言語】<mark class="var">【例：アメリカ・英語／日本・日本語】</mark>
+
+【作ってほしいもの】
+1. 商品タイトルの候補（3案）
+2. 商品説明
+3. 商品の特徴（箇条書き）
+4. 検索キーワードの候補
+5. 英語で販売する場合は、自然な英語の商品説明（日本語訳もつけてください）
+
+【条件】
+・誇張しない
+・実際に含まれていない仕様やサービスを書かない
+・「必ず」「最高」「絶対」など、根拠のない表現を使わない
+・キーワードを不自然に詰め込まない
+・分からない情報は、書かずに「要確認」と教えてください</pre>
+        <button class="btn btn--primary copy-btn" type="button" data-copy-target="prompt-listing"><span class="copy-btn__label">コピーする</span><span class="copy-btn__done">コピーしました！</span></button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="warn-box">
+        <p class="warn-box__label">確認してから使ってね</p>
+        <p>AIが作った文章は、<strong>実際の商品と合っているか</strong>を必ず自分の目で確認してください。サイズ・ピース数・配送などは、Printifyや販売先の画面の内容を優先します。</p>
+      </div>
+      <label class="done-check"><input type="checkbox" data-progress="step4"><span>STEP 4 完了</span></label>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 08 リール伏線回収：3つの工夫
+  ============================================================ -->
+  <section class="section three" id="three" aria-labelledby="three-heading">
+    <div class="section__inner reveal">
+      <p class="three__eyebrow">リールでお話しした、あの3つ</p>
+      <h2 class="three__heading" id="three-heading">ここからが大事。<br>「月5万で終わらせない」<br>3つの工夫</h2>
+      <p class="three__lead">作って売るだけで終わらせず、育てていく。そのための3つの考え方です。</p>
+      <p class="three__caption">※「月5万円」は目標の一例です。収益をお約束するものではありません。</p>
+    </div>
+  </section>
+
+  <!-- 工夫① -->
+  <section class="section" id="idea1" aria-labelledby="idea1-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">工夫 ①</p>
+      <h2 class="section__heading" id="idea1-heading">日本だけで<br>考えない</h2>
+      <div class="prose">
+        <p>海外で売ることも、選択肢のひとつです。日本らしいデザイン、動物、季節、趣味などは、国によって人気が違う可能性があります。</p>
+        <p>だから<strong>「自分が好きなもの」だけで決めず、売りたい市場を調べてみる</strong>のが大切です。</p>
+      </div>
+
+      <h3 class="sub-heading">プロンプト④ 海外市場をリサーチする</h3>
+      <div class="prompt-box">
+        <p class="prompt-box__title">プロンプト④ 海外市場リサーチ</p>
+        <pre class="prompt-box__text" id="prompt-market">あなたは、海外市場のリサーチが得意なアナリストです。
+Web検索を使って、次の国の「ジグソーパズル」市場を調べてください。
+
+【対象の国】<mark class="var">【例：アメリカ／イギリス／ドイツ】</mark>
+【作りたいパズルのジャンル】<mark class="var">【例：大人向けの風景／子ども向けの動物】</mark>
+
+【調べてほしいこと】
+1. 現在人気のあるテーマ
+2. これから需要が高まりそうな季節・イベント
+3. 色やデザインの傾向
+4. 競合となる商品の特徴
+5. 価格帯
+
+【条件】
+・すべての項目に、出典のURLをつける
+・出典のない情報は「確認できず」と書く
+・「調べて分かったこと」と「あなたの推測」を分ける
+・Web検索が使えない場合は、最初にそう伝える
+・最後に、私が自分の目で確認すべきポイントを3つ教えてください</pre>
+        <button class="btn btn--primary copy-btn" type="button" data-copy-target="prompt-market"><span class="copy-btn__label">コピーする</span><span class="copy-btn__done">コピーしました！</span></button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="warn-box">
+        <p class="warn-box__label">ここも自分の目で確認</p>
+        <p>AIが出したURLは、<strong>実際に開いて、内容が合っているか</strong>確かめてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工夫② -->
+  <section class="section section--soft" id="idea2" aria-labelledby="idea2-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">工夫 ②</p>
+      <h2 class="section__heading" id="idea2-heading">「パズルだけ」を<br>売らない</h2>
+      <div class="prose">
+        <p>1つ作ったAI画像を、「パズル1商品」だけで終わらせない考え方です。</p>
+      </div>
+      <ol class="mini-flow">
+        <li>同じ世界観のシリーズ化</li>
+        <li>複数のデザイン</li>
+        <li>関連する商品</li>
+        <li>デジタル商品への展開</li>
+      </ol>
+      <div class="prose">
+        <p>また、作る途中でできた<strong>プロンプト・作り方・テンプレート・ノウハウ</strong>も、別の商品やコンテンツに展開できる可能性があります。</p>
+      </div>
+      <div class="point-box">
+        <p class="point-box__label">POINT</p>
+        <p class="point-big">1回作ったものを、1回で終わらせない。</p>
+      </div>
+      <div class="warn-box">
+        <p class="warn-box__label">注意</p>
+        <p>「プロンプトを売れば稼げる」というお話ではありません。どんな商品を、どこで売れるかは、販売先の規約によって決まります。必ず事前に確認してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工夫③ -->
+  <section class="section" id="idea3" aria-labelledby="idea3-heading">
+    <div class="section__inner reveal">
+      <p class="step-label">工夫 ③</p>
+      <h2 class="section__heading" id="idea3-heading">「出品したら終わり」<br>にしない</h2>
+      <div class="prose">
+        <p>商品を置いておくだけでは、見つけてもらえないことがあります。<strong>見つけてもらう道すじ</strong>を作りましょう。</p>
+      </div>
+      <ul class="chip-list" aria-label="発信できる場所の例">
+        <li>Instagram</li>
+        <li>Pinterest</li>
+        <li>TikTok</li>
+        <li>X</li>
+      </ul>
+      <div class="prose">
+        <p>実は、<strong>作る過程そのものが発信のネタ</strong>になります。商品の宣伝ばかりでなく、こんな見せ方もできます。</p>
+      </div>
+      <ul class="check-list">
+        <li>「AIに○○を描かせてみた」</li>
+        <li>「この画像がパズルになるまで」</li>
+        <li>「完成したらこうなった」</li>
+        <li>「3案作ってみた。どれが好き？」</li>
+      </ul>
+
+      <h3 class="sub-heading">プロンプト⑤ SNS投稿アイデアを作る</h3>
+      <div class="prompt-box">
+        <p class="prompt-box__title">プロンプト⑤ SNS投稿アイデア</p>
+        <pre class="prompt-box__text" id="prompt-sns">あなたは、SNSで「見てもらえる企画」を考えるプロデューサーです。
+商品の宣伝文ではなく、見る人が「面白そう」「見てみたい」と思える、コンテンツ企画を考えてください。
+
+【商品】<mark class="var">【例：AIで作ったオリジナルのジグソーパズル】</mark>
+【ターゲット】<mark class="var">【例：家で楽しめる趣味を探している大人】</mark>
+【使うSNS】<mark class="var">【例：Instagram／Pinterest／TikTok／X】</mark>
+【商品の特徴】<mark class="var">【例：やさしい色合いで、見どころがたくさんある】</mark>
+
+【出してほしい企画】
+1. リールやショート動画の企画（3案）
+2. 通常投稿の企画（3案）
+3. ストーリーズの企画（3案）
+4. 制作過程を見せるコンテンツ（3案）
+5. コメントしたくなる企画（3案）
+
+【条件】
+・各案に「タイトル」と「内容のあらすじ」をつける
+・売り込みだけの投稿にしない
+・誇張した表現や、根拠のない表現を使わない
+・SNSごとの規約やルールの範囲で考える</pre>
+        <button class="btn btn--primary copy-btn" type="button" data-copy-target="prompt-sns"><span class="copy-btn__label">コピーする</span><span class="copy-btn__done">コピーしました！</span></button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3つの工夫まとめ図解 -->
+  <section class="section section--soft" id="summary3" aria-labelledby="summary3-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="summary3-heading">3つの工夫、<br>まとめるとこうなります</h2>
+      <div class="hub" role="group" aria-label="3つの工夫の図解">
+        <p class="hub__center">AIパズル</p>
+        <span class="hub__line" aria-hidden="true"></span>
+        <ul class="hub__list">
+          <li><span class="hub__num">①</span>海外にも届ける</li>
+          <li><span class="hub__num">②</span>1つの制作物を横展開する</li>
+          <li><span class="hub__num">③</span>SNSで見つけてもらう</li>
+        </ul>
+      </div>
+      <ol class="mini-flow mini-flow--row">
+        <li>作るだけ</li>
+        <li>見つけてもらう</li>
+        <li>選んでもらう</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 09 今日やるなら
+  ============================================================ -->
+  <section class="section" id="plan" aria-labelledby="plan-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="plan-heading">今日やるなら、<br>ここまででOK</h2>
+      <div class="prose">
+        <p>情報が多くて、ちょっと頭がいっぱいになったかもしれません。大丈夫です。<strong>今日、全部やる必要はありません。</strong></p>
+      </div>
+      <ol class="day-list">
+        <li class="day"><span class="day__label">DAY 1</span><span class="day__text">テーマを1つ決める</span></li>
+        <li class="day"><span class="day__label">DAY 2</span><span class="day__text">AIで画像を1枚作る</span></li>
+        <li class="day"><span class="day__label">DAY 3</span><span class="day__text">Printifyで商品化を試す</span></li>
+      </ol>
+      <div class="point-box">
+        <p class="point-box__label">ゴール</p>
+        <p class="point-big">まず、1商品を完成させる。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 10 よくある質問
+  ============================================================ -->
+  <section class="section section--soft" id="faq" aria-labelledby="faq-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="faq-heading">よくある質問</h2>
+      <div class="faq">
+        <details class="faq__item">
+          <summary>本当に、絵が描けなくてもできますか？</summary>
+          <p>画像づくりはAIに任せられます。ただし、できあがった画像が商品として問題ないかは、自分で確認して、必要なら修正をお願いする作業が要ります。</p>
+        </details>
+        <details class="faq__item">
+          <summary>在庫は必要ですか？</summary>
+          <p>PODを使う場合は、注文が入ってから商品を作る仕組みを使えます。先に商品を仕入れる、一般的な物販とは違います。</p>
+        </details>
+        <details class="faq__item">
+          <summary>Printifyだけで販売できますか？</summary>
+          <p>Printifyは「商品を作る・製造する」サービスです。お客様に見つけてもらい、買ってもらう場所（Etsyなどの販売チャネル）は、別に用意します。</p>
+        </details>
+        <details class="faq__item">
+          <summary>必ず売れますか？</summary>
+          <p>いいえ。テーマ、商品、価格、競合、集客などによって、結果は変わります。</p>
+        </details>
+        <details class="faq__item">
+          <summary>AI画像なら、何でも販売できますか？</summary>
+          <p>いいえ。著作権、商標、既存のキャラクター、各AIサービス・販売サービスの規約などを、確認する必要があります。</p>
+        </details>
+        <details class="faq__item">
+          <summary>無料のChatGPTでもできますか？</summary>
+          <p>画像を作れる機能や使える回数は、プランや時期によって変わります。現在の公式の案内をご確認ください。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 11 重要な注意事項
+  ============================================================ -->
+  <section class="section" id="caution" aria-labelledby="caution-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="caution-heading">重要な<br>注意事項</h2>
+      <div class="warn-box warn-box--big">
+        <p class="warn-box__label">販売の前に、必ずお読みください</p>
+        <ul class="warn-list">
+          <li>この特典は、収益を保証するものではありません。</li>
+          <li>「月5万」は目標の一例です。成果を保証するものではありません。</li>
+          <li>AIの市場調査の結果を、鵜呑みにしないでください。</li>
+          <li>販売の前に、自分でも市場や競合を確認してください。</li>
+          <li>著作権・商標権・肖像権などに注意してください。</li>
+          <li>既存のキャラクターやブランドは使わないでください。</li>
+          <li>AI生成物については、各サービスの利用規約を確認してください。</li>
+          <li>Printify・Etsyなどの料金、規約、商品ラインナップ、配送条件は変わることがあります。</li>
+          <li>販売する時点の最新の公式情報を、必ず確認してください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 12 まとめ
+  ============================================================ -->
+  <section class="section section--soft" id="closing" aria-labelledby="closing-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="closing-heading">AIは、<br>「画像を作る」だけじゃない。</h2>
+      <div class="prose">
+        <p>AIで画像を作れるようになったら、その先には、いろいろな使い道があります。</p>
+        <p>今回のパズル販売も、そのひとつ。</p>
+        <p>大切なのは、「AIで何が作れるか」だけではなく、</p>
+      </div>
+      <ul class="closing-list">
+        <li>それを<strong>誰に</strong>届けるか</li>
+        <li>どう<strong>商品に</strong>するか</li>
+        <li>どう<strong>見つけてもらう</strong>か</li>
+      </ul>
+      <div class="prose">
+        <p>まで考えること。</p>
+        <p>最初から完璧を目指さず、まずは1つ作ってみる。<br>そこから、始めてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA② （ページ最下部・完全版）
+  ============================================================ -->
+  <section class="section" id="cta" aria-labelledby="cta-heading">
+    <div class="section__inner reveal">
+      <div class="cta-card">
+        <h2 class="cta-card__heading" id="cta-heading">40代からでも、<br>働き方は変えられる。</h2>
+        <div class="prose">
+          <p>私も40代からAIを使って、いろいろな仕事に挑戦しています。</p>
+          <p>
+            「AIを使って家で働きたい」<br>
+            「今より収入の柱を増やしたい」<br>
+            そんな方に向けて、AI初心者さんでもAIを仕事に活かす考え方や方法をまとめた<br>
+            <strong class="cta-card__highlight">『AIマネタイズの教科書』</strong><br>
+            も無料でご用意しています。
+          </p>
+        </div>
+        <img src="assets/images/cta-textbook-contents.png" alt="AIマネタイズの教科書 5大特典。1 いま一番始めやすいAIマネタイズ手法、2 ChatGPT収益化プロンプト3選、3 AIマネタイズ神テンプレート、4 マネタイズのための生成AIツール3選、5 AI×SNSで収益を生むリアル事例" class="cta-card__contents">
+        <div class="prose">
+          <p>
+            また、「何から始めたらいいのかわからない」「自分には何が向いているのか相談したい」<br>
+            という方に向けて、<strong class="cta-card__highlight">AI収益化サポート会</strong>も実施中です。<br>
+            個別でのご相談も、下のLINEから受け付けています。
+          </p>
+          <p>一緒に新しいことに挑戦していきましょう！</p>
+        </div>
+        <a class="cta-card__banner-link" href="#cta" target="_blank" rel="noopener noreferrer" aria-label="AIマネタイズの教科書を受け取る" data-line-link data-cta="bottom-banner" hidden>
+          <img src="assets/images/cta-banner.png" alt="無料プレゼント AIマネタイズ教科書。AIで働き方の選択肢を広げたい方へ。LINE登録はこちら" class="cta-card__banner-img">
+        </a>
+        <a class="btn btn--primary btn--large" href="#cta" target="_blank" rel="noopener noreferrer" data-line-link data-cta="bottom" hidden>
+          AIを仕事につなげる方法を見てみる
+        </a>
+        <p class="cta-card__note">LINEで無料で受け取れます</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© MION</p>
+  <p>このページの無断転載・複製はご遠慮ください。</p>
+</footer>
+
+<!-- 画面下に常時表示するLINEボタン（リンク先は script.js の LINE_URL） -->
+<div class="sticky-cta">
+  <a class="btn btn--primary sticky-cta__btn" href="#cta" target="_blank" rel="noopener noreferrer" data-line-link data-cta="sticky" hidden>
+    <svg class="sticky-cta__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2-.1.9-.5 2.4-1.400 3.500 0 0 2.700-.300 4.700-1.700.9.200 1.900.300 3.100.300 5.500 0 10-3.600 10-8S17.500 3 12 3z"/></svg>
+    <span>LINEに登録して「AIマネタイズの教科書」を受け取る</span>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
